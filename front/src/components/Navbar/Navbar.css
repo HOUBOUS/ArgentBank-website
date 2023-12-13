@@ -1,0 +1,27 @@
+
+    .main-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 20px;
+    }
+
+  
+   .main-nav NavLink{
+    font-weight: bold;
+    color: #2c3e50;
+    
+  } 
+
+  .main-nav-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .mmain-nav-logo-image {
+   
+  height: 7vh;
+   margin: 10px 0 0 0;
+  }
+
+  
