@@ -7,7 +7,7 @@ function Connexion() {
     <div>
       <div className="user-connect">
         <NavLink className="user-button" to="/signin">
-           <i className="fas fa-user-circle"></i>
+           <i className=" fas fa-user-circle"></i>
           <p>Sign In</p>
         </NavLink>
         <NavLink className="user-button" to="/signup">
