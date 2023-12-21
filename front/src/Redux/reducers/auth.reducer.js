@@ -1,9 +1,3 @@
-export const USER_SIGNIN_SUCCESS = 'USER_SIGNIN_SUCESS';
-export const USER_SIGNIN_FAIL = 'USER_SIGNIN_FAIL';
-export const USER_SIGNOUT = 'USER_SIGNOUT';
-
-
-
 const initialState = { 
     user: '',
     token: '',
@@ -23,3 +17,6 @@ export default function authReducer ( state= initialState, action){
     return state;
 }
 };
+export const USER_SIGNIN_SUCCESS = 'USER_SIGNIN_SUCESS';
+export const USER_SIGNIN_FAIL = 'USER_SIGNIN_FAIL';
+export const USER_SIGNOUT = 'USER_SIGNOUT';
