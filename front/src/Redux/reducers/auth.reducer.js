@@ -1,16 +1,11 @@
-/* eslint-disable default-case */
-import { GET_POSTS } from "../actions/post.action";
 
-const initialState = {
-    
-  };
-  
-  export default function postReducer(state = initialState, action) 
-      {
-         switch (action.type) {
-            case GET_POSTS:
-                return action.payload;
-                default: 
-                return state;
-         }
-      }
+const initialState = { 
+    use: '',
+
+};
+
+export default function authReducer ( state= initialState, action){
+
+    return state;
+
+};
