@@ -1,8 +1,8 @@
 
-export const USER_PROFILE_SUCESS = 'USER_PROFILE_SUCESS';
-export const USER_PROFILE_FAIL = 'USER_PROFILE_FAIL';
-export const USER_PROFILE_UPDATE = 'USER_PROFILE_UPDATE';
-export const USER_PROFILE_RESET = 'USER_PROFILE_RESET';
+export const USER_ACCOUNT_SUCESS = 'USER_PROFILE_SUCESS';
+export const USER_ACCOUNT_FAIL = 'USER_PROFILE_FAIL';
+export const USER_ACCOUNT_UPDATE = 'USER_PROFILE_UPDATE';
+export const USER_ACCOUNT_RESET = 'USER_PROFILE_RESET';
 
 
 
@@ -16,25 +16,24 @@ const initialState = {
 
 export default function userReducer( state = initialState, action ){
      
-
     switch(action.type){
-       case USER_PROFILE_SUCESS:
+       case USER_ACCOUNT_SUCESS:
         return{
             firstName: action.payload.body.firstName,
             lastName: action.payload.body.lastName,
         }
 
-        case USER_PROFILE_FAIL: 
+        case USER_ACCOUNT_FAIL: 
         return{
             error: action.payload
         }
-       case USER_PROFILE_UPDATE:
+       case USER_ACCOUNT_UPDATE:
         return{
             sucess: true,
             firstName: action.paylaod.body.firstName,
             lastName: action.payload.body.lastName,
         }
-        case USER_PROFILE_RESET:
+        case USER_ACCOUNT_RESET:
             return{
                 firstName: null,
                 lastName: null,
