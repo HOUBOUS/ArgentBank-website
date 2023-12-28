@@ -4,9 +4,8 @@ import Banner from '../../components/Banner/Banner.jsx';
 import Features from '../../components//Features/Features.jsx';
 
 import SignUp from '../SignUp/SignUp.jsx';
-import Account from '../Account/Account.jsx';
+// import Account from '../Account/Account.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
-
 
 function Home() {
   return (
@@ -17,7 +16,7 @@ function Home() {
         <Features/>
        
         <SignUp/>
-        <Account/>
+        
         <Footer/>
 
 

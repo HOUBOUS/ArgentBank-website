@@ -1,0 +1,62 @@
+.EditName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0 25px 0;
+}
+
+.editUserName-header {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.edit-button {
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  
+}
+
+.editUserNameInputs {
+  display: flex;
+  flex-direction: column;
+   
+}
+
+.editUserNameInput {
+  display: flex;
+  flex-direction: row;
+   justify-content: center;
+}
+
+.editUserNametext{
+    width: 70%;
+}
+
+.editUserNameContent input {
+  border: 1px solid grey;
+  border-radius: 5px;
+   height: 40px;
+  margin: 5px 0 20px;
+  padding: 0 10px;
+  font-size: 1rem;
+}
+.editUserNameButtons{
+padding: 10px 35px;
+}
+
+.editSaveButton,
+.editCancelButton {
+  height: 35px;
+  width: 100px;
+  margin-top: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+}

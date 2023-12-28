@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/img/argentBankLogo.png";
-import './Navbar.css';
-import Connexion from '../Connexion/Connexion.jsx';
+import "./Navbar.css";
+import UserConnexion from "../UserConnexion/UserConnexion";
 
 function Navbar() {
   return (
@@ -14,10 +14,9 @@ function Navbar() {
             src={Logo}
             alt="Logo de la banque en ligne Argent Bank"
           />
+          <h2 className="sr-only">Argent Bank</h2>
         </NavLink>
-
-        <Connexion/>
-
+        <UserConnexion />
       </nav>
     </div>
   );
