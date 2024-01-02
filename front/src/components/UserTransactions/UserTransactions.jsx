@@ -26,7 +26,7 @@ function UserTransactions() {
       </section>
       <section className="account">
         <div className="account-content-wrapper">
-          <h3 cclassName="account-title">Argent Bank Credit Card (x8349)</h3>
+          <h3 className="account-title">Argent Bank Credit Card (x8349)</h3>
           <p className="account-amount">$184.30</p>
           <p className="account-amount-description">Current Balance</p>
         </div>

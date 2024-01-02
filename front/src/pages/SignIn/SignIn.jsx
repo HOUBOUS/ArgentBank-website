@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { signinUser } from "./signinSlice.js";
+import {signinUser}  from "../../Redux/Slices/signinSlice.js";
 
 function SignIn() {
 
@@ -14,7 +14,7 @@ function SignIn() {
   const [password, setPassword] = useState('');
 
   //Redux state
-  const {isLoading, error} = useSelector((state)=>state.signin);
+  const {isAuth, isLoading, error, isRemember } = useSelector((state)=>state.signin);
 
   const dispatch = useDispatch();
 
@@ -31,26 +31,20 @@ function SignIn() {
        password
     }
 
-    dispatch(signinUser(credentials)).then ((result)=>{
-      if (result.payload){
-          setEmail('');
-          setPassword('');
-          navigate('/');
-      }
-    });
-    
-    //         if (isRemember) {
-    //     localStorage.setItem("token, token");
-    //     //upDate state and note sucess authentification
-    //     dispatch(signinSucess());
-    //     navigate("/Account/Account");
-    //   } else {
-    //     // If Token is not returned
-    //     localStorage.removeItem("token");
-    //   }
-    // }
-  };
- 
+    dispatch(signinUser(credentials))
+
+  }
+
+  useEffect (() =>{
+    if (isAuth){
+      navigate('/account')
+    }
+
+  }, [isAuth, navigate])
+
+
+  
+   
  return (
     <div>
       <Navbar />
@@ -82,18 +76,22 @@ function SignIn() {
               />
             </div>
             <div className="input-remember">
-              <input type="checkbox" id="remember-me" 
+              <input type="checkbox" 
+              id="remember-me" 
+              value="remember-me"
+              defaultChecked={isRemember}
+              onChange={() => dispatch(signinUser(!isRemember))}
              
               />
               <label htmlFor="remember-me"> Remember me </label>
             </div>
 
-            <NavLink to="/Account" className="sign-in-button">
+            <button className="sign-in-button" type="submit">
               Sign In
-            </NavLink>
+            </button>
 
-            {isLoading?'Loading...':'Login'}
-            {error&&(
+            {isLoading ? 'Loading...':'Login'}
+            {error && (
               <div className="alert alert-danger" role='alert'>{error}</div>
             )}
             

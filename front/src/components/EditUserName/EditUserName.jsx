@@ -1,35 +1,48 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./EditUserName.css";
 import { useDispatch, useSelector } from "react-redux";
-import {userAccountUpdate} from "../../Redux/actions/action";
+import {userProfile, updateUserProfile} from "../../Redux/Slices/userSlice";
+
 
 
 function EditUserName() {
     const dispatch = useDispatch();
+ 
+    const {lastName, firstName} = useSelector((state) => state.userProfile);
+    // const {newFirstName, newLastName, newUserName} = useSelector((state) => state.userProfile);
 
-    const {token} = useSelector((state) => state.userSignin)
-    const {firstName} = useSelector((state) => state.userAccount);
-    const {lastName} = useSelector((state) => state.userAccount);
-    const [newFirstName, setNewFirstName] = useState('');
-    const [newLastName, setNewLastName] = useState('');
-    const [editButton, setEditButton] = useState('');
-    const {sucess} = useSelector((state) => state.userSignin)
+    // useEffect(() =>{
+    //   dispatch(userProfile());
+    // }, [dispatch])
+
     
+    const [editButton, setEditButton] = useState('');
+    const[ newUserName, setNewUserName] = useState('');
+    const[ newFirstName, setNewFirstName] = useState('');
+    const[ newLastName, setNewLastName] = useState('');
+    // const {sucess} = useSelector((state) => state.signin)
+    
+
 
     const editNameButton = (e) =>{
         e.preventDefault();
-        setEditButton((current) => !current);
-    }
+        setEditButton(!editButton);
+    };
      
-    const submitHandler =(e) => {
+      
+    const submitHandler = async(e) => {
         e.preventDefault();
-        dispatch(userAccountUpdate(token, newFirstName, newLastName))
-        if ({sucess}) {
-            setEditButton((current) => current)
-        }
-   
-    }
+        let credentials = {
+          newUserName, 
+          newFirstName, 
+          newLastName
+        };
 
+        dispatch(updateUserProfile(credentials))
+        
+    };
+
+  
     return (
     <div className="EditName">
         
@@ -38,7 +51,7 @@ function EditUserName() {
       <div className="editUserName-header">
         <h1>
           Welcome back,      
-          {firstName} {lastName}!
+          {firstName} {lastName} !
         </h1>
         <button onClick={editNameButton} className="edit-button">
             Edit Name
@@ -50,6 +63,17 @@ function EditUserName() {
         <h1>Welcome back</h1>
         <form className="editUserNameContent" onSubmit={submitHandler}>
           <div className="editUserNameInputs">
+
+            
+          <span  className="editUserNameInput">
+               <p className="editUserNametext" > User Name</p> 
+          <input
+           type='text'
+           placeholder={newUserName}
+           onChange={(e) => setNewUserName(e.target.value)}
+          required
+          />
+          </span>
 
             <span  className="editUserNameInput">
                <p className="editUserNametext" > First name</p> 

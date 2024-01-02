@@ -1,48 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import{signup} from "../../Redux/actions/action";
-import './UserConnexion.css';
+import "./UserConnexion.css";
+import { signinUser } from "../../Redux/Slices/signinSlice.js";
+import { getUserProfile } from "../../Redux/Slices/userSlice.js";
 
 function UserConnexion() {
-
-  const { token } = useSelector((state) => state.ignin);
-  const {firstName} = useSelector((state) => state.userAccount)
-  const navigate = useNavigate();
+  const isAuth = useSelector((state) => state.signin.isAuth);
+  const  user  = useSelector((state) => state.userProfile.user);
   const dispatch = useDispatch();
 
-  const signUpHandler =() =>{
-    dispatch( signup())
-    navigate ('/')
+//   const localStorageUser = localStorage.getItem("user");
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(getUserProfile());
+    }
+  }, [isAuth, dispatch]);
+
+ 
+  function clearLocalStorage() {
+    localStorage.clear();
+    dispatch( signinUser());
+    dispatch( getUserProfile());
   }
-  
+
+
   return (
     <div>
-      {!token ? (
+      {isAuth ? (
+        <NavLink className="main-nav-item" to="/account">
+          <i className="fa fa-user-circle"></i>
+          {user}
+        </NavLink>
+      ) : (
         <NavLink className="main-nav-item" to="/signin">
           <i className="fa fa-user-circle"></i>
           Sign In
         </NavLink>
-      ) : (
-        ""
       )}
 
-      {token ? (
-        <NavLink className="main-nav-item" to="/account">
-          <i className="fa fa-user-circle"></i>
-          {firstName}
-        </NavLink>
-      ) : (
-        ""
-      )}
-      {token ? (
-        <NavLink className="main-nav-item" onClick={signUpHandler}>
+      {isAuth && (
+        <NavLink className="main-nav-item" 
+        onClick={()=> clearLocalStorage()} to="/">
           <i className="fa fa-sign-out"></i>
           Sign Out
         </NavLink>
-      ) : (
-        ""
+      
+    
       )}
     </div>
   );

@@ -1,10 +1,9 @@
-// import { combineReducers } from "redux";
+import { combineReducers } from "redux";
+import accountReducer from '../Slices/userSlice'
+import signinReducer  from '../Slices/signinSlice'
 
-// import  userReducer  from './user.reducer';
-// import authReducer from "./auth.reducer";
+export default combineReducers({
+    account: accountReducer,
+    signin: signinReducer,
 
-// export default combineReducers({
-// userSignin: userReducer, 
-// userAccount: authReducer,
-
-// })
+})

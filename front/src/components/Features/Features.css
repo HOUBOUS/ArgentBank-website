@@ -4,10 +4,10 @@
   align-items: center;
 }
 
-@media (min-width: 920px) {
+@media (min-width: 778px) {
     .features {
       flex-direction: row;
-          }
+   }
   }
 
   
