@@ -37,7 +37,7 @@ function SignIn() {
 
   useEffect (() =>{
     if (isAuth){
-      navigate('/account')
+      navigate('/')
     }
 
   }, [isAuth, navigate])

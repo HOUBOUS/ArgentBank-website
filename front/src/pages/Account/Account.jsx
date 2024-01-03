@@ -4,17 +4,18 @@ import EditUserName from '../../components/EditUserName/EditUserName';
 import UserTransactions from '../../components/UserTransactions/UserTransactions';
 import Footer from '../../components/Footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserProfile } from '../../Redux/Slices/userSlice';
+
 
 function Account() {
 
   const dispatch = useDispatch();
   const { isRemember } = useSelector((state) => state.signin)
-  const user = useSelector((state) => state.getUserProfile)
+  const {user} = useSelector((state) => state.userProfile)
  
   useEffect(() =>{
  
-      dispatch(getUserProfile())
+      
+      console.log(user);
 
     if (isRemember && user) {
       const {userName, firstName, lastName} = user;
@@ -26,9 +27,11 @@ function Account() {
       localStorage.removeItem('firstName')
       localStorage.removeItem('lastName')
     }
-  }, [dispatch, isRemember]);
+  }, [dispatch, isRemember, user]);
    
 
+  
+  
   
   return (
     <div>

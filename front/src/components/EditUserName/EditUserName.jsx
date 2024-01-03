@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./EditUserName.css";
 import { useDispatch, useSelector } from "react-redux";
-import {userProfile, updateUserProfile} from "../../Redux/Slices/userSlice";
+import {getUserProfile, updateUserProfile} from "../../Redux/Slices/userSlice";
 
 
 
 function EditUserName() {
     const dispatch = useDispatch();
- 
-    const {lastName, firstName} = useSelector((state) => state.userProfile);
-    // const {newFirstName, newLastName, newUserName} = useSelector((state) => state.userProfile);
-
-    // useEffect(() =>{
-    //   dispatch(userProfile());
-    // }, [dispatch])
+    const { lastName, firstName} = useSelector((state) => state.getUserProfile) || {};
+    
+    useEffect(() =>{
+      dispatch(getUserProfile())
+    }, [dispatch]);
 
     
     const [editButton, setEditButton] = useState('');

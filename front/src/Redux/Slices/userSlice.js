@@ -10,14 +10,22 @@ const initialState = {
 //asynchrone function with Axios
 export const getUserProfile = createAsyncThunk(
   "userProfile/getUserProfile",
-  async (credentials) => {
+  async (_, thunkAPI) => {
+    const token = thunkAPI.getState().signin.token; // Récupération du token d'authentification depuis le state Redux
+      console.log(token);
     const request = await axios.post(
       "http://localhost:3001/api/v1/user/profile",
-      credentials
+      {}, // Envoyez les données nécessaires pour la requête ici, s'il y en a
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      
     );
-    const response = await request.data.data;
+    const response = await request.data.body;
     localStorage.setItem("userProfile", JSON.stringify(response));
-
+console.log(response);
     return response;
   }
 );
@@ -29,7 +37,7 @@ export const updateUserProfile = createAsyncThunk(
       "http://localhost:3001/api/v1/user/profile",
       credentials
     );
-    const response = request.data.data;
+    const response = request.data.body;
     localStorage.setItem("userProfile", JSON.stringify(response));
 
     return response;
@@ -88,7 +96,7 @@ const userProfileSlice = createSlice({
 });
 const { actions, reducer } =  userProfileSlice;
 export const {
-
+  
   userProfilePending,
   userProfileFulfilled,
   userProfileRejected,
