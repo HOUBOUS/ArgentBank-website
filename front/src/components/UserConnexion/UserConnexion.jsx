@@ -7,21 +7,22 @@ import { getUserProfile } from "../../Redux/Slices/userSlice.js";
 
 function UserConnexion() {
   const isAuth = useSelector((state) => state.signin.isAuth);
-  const  user  = useSelector((state) => state.userProfile.user);
+  const user  = useSelector((state) => state.userProfile.user);
   const dispatch = useDispatch();
 
 //   const localStorageUser = localStorage.getItem("user");
   useEffect(() => {
     if (isAuth) {
       dispatch(getUserProfile());
+      console.log(user)
     }
   }, [isAuth, dispatch]);
 
  
   function clearLocalStorage() {
     localStorage.clear();
-    dispatch( signinUser());
-    dispatch( getUserProfile());
+    // dispatch( signinUser());
+    // dispatch( getUserProfile());
   }
 
 
@@ -45,8 +46,7 @@ function UserConnexion() {
           <i className="fa fa-sign-out"></i>
           Sign Out
         </NavLink>
-      
-    
+        
       )}
     </div>
   );

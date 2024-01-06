@@ -67,9 +67,8 @@ export const {
   signinUserPending,
   signinUserFulfilled,
   signinUserRejected,
- 
-  
-} = actions
+
+} = actions;
 
 
 export default reducer;
