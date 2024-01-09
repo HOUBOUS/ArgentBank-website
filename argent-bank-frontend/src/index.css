@@ -265,10 +265,15 @@ body {
 .edit-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+   gap: 10px;
   align-items: center;
   margin: 20px;
 }
+
+/* .InputForm{
+  margin-bottom: 0.5rem;
+  height: 2.5rem;
+} */
 
 .edit-form label{
   font-size: 16px;
@@ -276,6 +281,10 @@ body {
 
 .edit-input {
   background-color: #ccc;
+ 
+}
+.editUserNametext{
+  width: 70%;
 }
 
 .edit-form input{
